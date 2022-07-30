@@ -9,6 +9,15 @@ Quantization은 float type을 가지는 parameter를 integer type으로 변환�
 그러나, 정확도가 떨어지는 것은 불가피하다.  
 weight 파일의 사이즈 축소, 연산량 감소, 효율적인 하드웨어 사용이 Quantization의 주 목적이라고 볼 수 있다.
 
+### [Quantization](/quantization.py)
+- TFLite를 Quantization하는 python code
+
+### [Inference](/inference.py)
+- Inference quantized tflite
+
+### [Convert](/convert_format.py)
+- pb to h5 format and h5 to pb format
+
 ### Condition before applying Quantization
 1. Inference Only  
     - quantization은 inference할 때만 사용  
