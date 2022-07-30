@@ -1,13 +1,13 @@
 # Quantization
 
 ### What?  
-Quantization은 float type을 가지는 parameter를 integer type으로 변환하는 과정을 의미한다  
-보통 32bit float을 8bit integer로 변환한다  
+Quantization은 float type을 가지는 parameter를 integer type으로 변환하는 과정을 의미한다.  
+보통 32bit float을 8bit integer로 변환한다.  
 
 ### Why?  
-위의 예시처럼 32bit가 8bit로 줄어들기 때문에 메모리 사용량 및 inference 속도가 감소하는 효과를 얻을 수 있다  
-그러나, 정확도가 떨어지는 것은 불가피하다  
-weight 파일의 사이즈 축소, 연산량 감소, 효율적인 하드웨어 사용이 Quantization의 주 목적이라고 볼 수 있다
+위의 예시처럼 32bit가 8bit로 줄어들기 때문에 메모리 사용량 및 inference 속도가 감소하는 효과를 얻을 수 있다.  
+그러나, 정확도가 떨어지는 것은 불가피하다.  
+weight 파일의 사이즈 축소, 연산량 감소, 효율적인 하드웨어 사용이 Quantization의 주 목적이라고 볼 수 있다.
 
 ### Condition before applying Quantization
 1. Inference Only  
@@ -28,4 +28,4 @@ weight 파일의 사이즈 축소, 연산량 감소, 효율적인 하드웨어 �
 
 
 #### 나중에 딥러닝 모델의 weight 파일을 Quantization 해야 할 일이 있을 때 보기 위해 만든 Repository
-Reference : https://gaussian37.github.io/dl-concept-quantization/
+Reference : https://gaussian37.github.io/dl-concept-quantization/, https://da2so.tistory.com/13
