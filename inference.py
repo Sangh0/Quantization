@@ -1,6 +1,7 @@
 import time
 import numpy as np
 import tensorflow as tf
+from tqdm.auto import tqdm
 
 def inference(tflite_file, test_images, test_labels):
     # initialize the interpreter
@@ -15,7 +16,7 @@ def inference(tflite_file, test_images, test_labels):
     correct = 0
     start = time.time()
 
-    for i in range(len(test_images)):
+    for i in tqdm(range(len(test_images))):
         image = np.expand_dims(test_images[i], axis=0).astype(np.uint8)
         
         # step 1. enter image into the model
@@ -30,6 +31,7 @@ def inference(tflite_file, test_images, test_labels):
             correct += 1
         
     accuracy = correct / (len(test_images))
-    print(f'Accuracy : {accuracy}, Time: {time.time() - start}')
+    end = time.time()
+    print(f'Accuracy : {accuracy*100}%, Time: {(end - start):.3f}s')
     
     return accuracy
