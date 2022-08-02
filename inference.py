@@ -1,7 +1,8 @@
+import time
 import numpy as np
 import tensorflow as tf
 
-def inference(tflite_file, test_data):
+def inference(tflite_file, test_images, test_labels):
     # initialize the interpreter
     interpreter = tf.lite.Interpreter(model_path=tflite_file)
     interpreter.allocate_tensors()
@@ -12,21 +13,23 @@ def inference(tflite_file, test_data):
 
     # inference step
     correct = 0
-    
-    for batch, (image, label) in enumerate(test_data):
-        image = tf.expand_dim(image, axis=0)
+    start = time.time()
 
+    for i in range(len(test_images)):
+        image = np.expand_dims(test_images[i], axis=0).astype(np.uint8)
+        
         # step 1. enter image into the model
         interpreter.set_tensor(input_index, image)
         # step 2. run inference
         interpreter.invoke()
         # step 3. interpret output
-        prediction = interpreter.get_tensor(output_index)
-
-        if np.argmax(prediction) == np.argmax(label):
+        output = interpreter.tensor(output_index)
+        output = np.argmax(output()[0])
+        
+        if output == test_labels[i]:
             correct += 1
-
-    # calculate accuracy
-    mean_acc = correct / (batch+1)
-
-    print(f'Accuracy of TFLite Model: {mean_acc}')
+        
+    accuracy = correct / (len(test_images))
+    print(f'Accuracy : {accuracy}, Time: {time.time() - start}')
+    
+    return accuracy
