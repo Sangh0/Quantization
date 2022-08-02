@@ -45,9 +45,9 @@ keras_model.save(save_dict)
 
 # Load weight file
 ### ex1) load h5 file
-model_h5 = tf.keras.models.load_model('my_model.h5')
+model_h5_path = './my_model.h5'
 ### ex2) load pd file
-model_pb = tf.keras.models.load_model(save_dict)
+model_pb_path = './quantization/my_model' 
 
 # Provide RepresentativeDataset for quantization of parameter data of input and output in model
 def representative_data_gen():
@@ -58,9 +58,9 @@ def representative_data_gen():
 ### ex1) keras model
 converter = tf.lite.TFLiteConverter.from_keras_model(keras_model)
 ### ex2) h5 weight file
-converter = tf.lite.TFLiteConverter.from_saved_model(model_h5)
+converter = tf.lite.TFLiteConverter.from_saved_model(model_h5_path)
 ### ex3) pb weight file
-converter = tf.lite.TFLiteConverter.from_saved_model(model_pb)
+converter = tf.lite.TFLiteConverter.from_saved_model(model_pb_path)
 
 # Quantize all parameter of model through optimization
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
