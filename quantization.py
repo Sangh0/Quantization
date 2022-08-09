@@ -58,7 +58,7 @@ def representative_data_gen():
 ### ex1) keras model
 converter = tf.lite.TFLiteConverter.from_keras_model(keras_model)
 ### ex2) h5 weight file
-converter = tf.lite.TFLiteConverter.from_saved_model(model_h5_path)
+converter = tf.lite.TFLiteConverter.from_saved_model(keras.models.load_model(model_h5_path))
 ### ex3) pb weight file
 converter = tf.lite.TFLiteConverter.from_saved_model(model_pb_path)
 
