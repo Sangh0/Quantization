@@ -37,4 +37,4 @@ weight 파일의 사이즈 축소, 연산량 감소, 효율적인 하드웨어 �
 
 
 #### 나중에 딥러닝 모델의 weight 파일을 Quantization 해야 할 일이 있을 때 보기 위해 만든 Repository
-Reference : https://gaussian37.github.io/dl-concept-quantization/, https://da2so.tistory.com/13
+Reference : [Blog 1](https://gaussian37.github.io/dl-concept-quantization/), [Blog 2](https://da2so.tistory.com/13)
